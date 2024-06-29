@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meal App</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- Link to your CSS file -->
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1 id="header">Meal App</h1>
+        <button id="favorites-link">
+          <i class="fa fa-heart"></i> Favorites
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <form id="form">
+          <input type="text" placeholder="Search for Meal" id="searchBox" />
+          <button id="search-btn" type="submit">Search</button>
+        </form>
+
+        <div id="recipe-container" class="grid-container">
+          <!-- Recipes will be dynamically added here -->
+        </div>
+      </div>
+    </main>
+
+    <!-- Recipe Popup -->
+    <div id="recipe-popup" class="recipe-popup">
+      <div class="popup-content">
+        <span id="recipe-close-btn" class="recipe-close-btn">&times;</span>
+        <div id="recipe-details-content" class="recipe-details-content">
+          <!-- Content will be dynamically added here -->
+        </div>
+      </div>
+    </div>
+    
+
+     <!-- Favorites Container -->
+  <div id="favorites-container" class="favorites-container">
+    <!-- Favorite meals will be dynamically added here -->
+  </div>
+  
+    <script src="script.js"></script>
+    <!-- Link to your JavaScript file -->
+  </body>
+</html>

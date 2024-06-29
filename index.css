@@ -1,0 +1,248 @@
+/* Reset and General Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  background-color: #343a40;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+header #header {
+  font-size: 28px;
+  margin: 0;
+}
+
+header #favorites-link {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+header #favorites-link i {
+  margin-right: 5px;
+}
+
+main {
+  padding: 20px 0;
+}
+
+/* Search Form Styles */
+#form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#searchBox {
+  width: 300px;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+#search-btn {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+#search-btn i {
+  margin-right: 5px;
+}
+
+#search-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Recipe Container Styles */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.recipe {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.recipe img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+.recipe-content {
+  padding: 15px;
+}
+
+.recipe-content h3 {
+  margin: 10px 0;
+  font-size: 20px;
+}
+
+.recipe-content p {
+  margin: 8px 0;
+}
+
+.recipe-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.recipe-buttons button {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.recipe-buttons button:hover {
+  background-color: #0056b3;
+}
+
+/* Popup Styles */
+.recipe-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  z-index: 1000;
+  overflow: auto;
+}
+
+.popup-content {
+  background-color: #fff;
+  margin: 10% auto; /* Centered position */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  max-width: 600px; /* Adjust max-width as needed */
+}
+
+.recipe-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #f3eded;
+}
+
+/* Styling for Recipe Details */
+.recipe-details-content {
+  margin-top: 20px;
+}
+
+.recipe-details-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.recipe-details-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.recipe-details-content p {
+  margin-bottom: 10px;
+}
+
+.recipe-details-content ul {
+  padding-left: 20px;
+}
+
+.recipe-details-content ul li {
+  margin-bottom: 5px;
+}
+
+/* Favorite Button */
+.favorite-btn {
+  background-color: transparent;
+  color: #f44336; /* Red color for heart icon */
+  border: none;
+  padding: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.favorite-btn:hover {
+  color: #d32f2f; /* Darker red color on hover */
+}
+
+.favorite-btn i {
+  font-size: 1rem; /* Adjust size of heart icon */
+}
+
+/* Filled Heart Icon */
+.favorite-btn.favorite {
+  color: #ec1708; /* Green color for filled heart */
+}
+
+/* styles.css */
+#favorites-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  /* Add other styling properties as needed */
+}
+/* CSS for Back button */
+.back-button {
+  background-color: #4caf50; /* Green background color */
+  color: white; /* White text color */
+  padding: 6px 12px; /* Padding inside the button */
+  border: none; /* No border */
+  cursor: pointer; /* Cursor style on hover */
+  font-size: 16px; /* Font size */
+  border-radius: 3px; /* Rounded corners */
+  width: 80px; /* Fixed width */
+  height: 30px; /* Fixed height */
+}
+
+/* Hover effect */
+.back-button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
