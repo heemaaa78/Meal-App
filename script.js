@@ -12,19 +12,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const favoritesContainer = document.getElementById("favorites-container");
 
   let favorites = []; // Array to store favorite meals IDs
-  // Define the back button globally
-  const backButton = document.createElement("button");
-  backButton.textContent = "Back";
-  backButton.classList.add("back-button"); // Add the back-button class
-  backButton.addEventListener("click", () => {
-    favoritesContainer.style.display = "none"; // Hide favorites container
-    recipeContainer.style.display = "grid"; // Display recipe container
-  });
 
-  // Load favorites from localStorage if available
-  if (localStorage.getItem("favorites")) {
-    favorites = JSON.parse(localStorage.getItem("favorites"));
-  }
+  // Event Listener for Search Button
+  searchBtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+    const recipeName = searchBox.value.trim();
+    if (recipeName) {
+      await recipeList(recipeName);
+    } else {
+      console.log("Please enter a meal name.");
+    }
+  });
 
   // Function to Fetch and Display Recipes
   const recipeList = async (query) => {
@@ -42,17 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
       displayNoResultMessage();
     }
   };
-
-  // Event Listener for Search Button
-  searchBtn.addEventListener("click", async (e) => {
-    e.preventDefault();
-    const recipeName = searchBox.value.trim();
-    if (recipeName) {
-      await recipeList(recipeName);
-    } else {
-      console.log("Please enter a meal name.");
-    }
-  });
 
   // Function to Display Recipes
   const displayRecipes = (meals) => {
@@ -150,13 +137,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // Function to Get Ingredients from Meal Object
+  const getIngredients = (meal) => {
+    const ingredients = [];
+    for (let i = 1; i <= 20; i++) {
+      if (meal[`strIngredient${i}`]) {
+        ingredients.push(`
+          <li>${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}</li>
+        `);
+      } else {
+        break;
+      }
+    }
+    return ingredients;
+  };
+
   // Function to Toggle Favorite
   const toggleFavorite = (mealId) => {
     const favoriteBtn = document.querySelector(
       `.favorite-btn[data-meal-id="${mealId}"]`
     );
     const isFavorite = favorites.includes(mealId);
-
     if (isFavorite) {
       // Remove from favorites
       const index = favorites.indexOf(mealId);
@@ -179,6 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const updateFavoritesLinkUI = () => {
     favoritesLink.innerHTML = `<i class="fa fa-heart"></i> Favorites (${favorites.length})`;
   };
+
   // Event Listener for Close Recipe Popup Button
   recipeCloseBtn.addEventListener("click", () => {
     recipePopup.style.display = "none";
@@ -215,18 +217,17 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initial UI update for favorites link
   updateFavoritesLinkUI();
 
-  // Function to Get Ingredients from Meal Object
-  const getIngredients = (meal) => {
-    const ingredients = [];
-    for (let i = 1; i <= 20; i++) {
-      if (meal[`strIngredient${i}`]) {
-        ingredients.push(`
-          <li>${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}</li>
-        `);
-      } else {
-        break;
-      }
-    }
-    return ingredients;
-  };
+  // Load favorites from localStorage if available
+  if (localStorage.getItem("favorites")) {
+    favorites = JSON.parse(localStorage.getItem("favorites"));
+  }
+
+  // Define the back button globally
+  const backButton = document.createElement("button");
+  backButton.textContent = "Back";
+  backButton.classList.add("back-button"); // Add the back-button class
+  backButton.addEventListener("click", () => {
+    favoritesContainer.style.display = "none"; // Hide favorites container
+    recipeContainer.style.display = "grid"; // Display recipe container
+  });
 });
